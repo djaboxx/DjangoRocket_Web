@@ -1,0 +1,19 @@
+{% extends 'main_site_no_sidebar.html' %}
+{% load bootstrap %}
+{% load static %}
+{% load i18n %}
+{% block 'main_content' %}
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading" style="color: white">
+            <span style="color:green">{% trans "This site is in private beta" %}</span>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-4">
+    	<p>{% blocktrans %}If you have signup code you can enter it below.{% endblocktrans %}</p>
+    	<form method="get" action="">
+        	<div><input type="text" name="code" placeholder="{% trans 'Your signup code...' %}" /></div>
+        	<div><input type="submit" class="btn btn-primary gradient"></div>
+    	</form>
+    </div>
+{% endblock %}

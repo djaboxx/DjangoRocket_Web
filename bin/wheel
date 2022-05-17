@@ -1,4 +1,4 @@
-#!/Users/darnold/git/DjangoRocket/bin/python
+#!/Users/darnold/git/DjangoRocket_Web/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

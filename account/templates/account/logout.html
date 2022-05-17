@@ -1,0 +1,23 @@
+{% extends 'main_site_no_sidebar.html' %}
+{% load bootstrap %}
+{% load static %}
+{% load i18n %}
+{% block 'main_content' %}
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading" style="color: white">
+            <span style="color:green">{% trans "Logout?" %}</span>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-4">
+                <form method="POST" action="{% url "account:account_logout" %}">
+                    <fieldset>
+                        {% csrf_token %}
+                        <p>{% trans "Are you sure you want to log out?" %}</p>
+                        <button type="submit" class="btn btn-primary gradient">{% trans "Log out" %}</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

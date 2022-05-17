@@ -9,7 +9,7 @@ def-env activate-virtualenv [] {
     }
 
     let is-windows = ((sys).host.name | str downcase) == 'windows'
-    let virtual-env = '/Users/darnold/git/DjangoRocket'
+    let virtual-env = '/Users/darnold/git/DjangoRocket_Web'
     let bin = 'bin'
     let path-sep = ':'
     let path-name = if $is-windows {
@@ -89,4 +89,4 @@ def-env activate-virtualenv [] {
 activate-virtualenv
 
 alias pydoc = python -m pydoc
-alias deactivate = source '/Users/darnold/git/DjangoRocket/bin/deactivate.nu'
+alias deactivate = source '/Users/darnold/git/DjangoRocket_Web/bin/deactivate.nu'

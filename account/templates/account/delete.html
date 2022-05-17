@@ -1,0 +1,26 @@
+{% extends 'main_site_no_sidebar.html' %}
+{% load bootstrap %}
+{% load static %}
+{% load i18n %}
+{% block 'main_content' %}
+
+	<br />
+    <div class="panel panel-default">
+        <div class="panel-heading" style="color: white">
+    		<span style="color:green">{% trans "Delete Account" %}</span>
+    	</div>
+        <div class="panel-body">
+            <div class="col-md-4">
+    			<p>{% blocktrans %}If you go ahead and delete your account, your information will be 
+    				<b>expunged within {{ ACCOUNT_DELETION_EXPUNGE_HOURS }} hours</b>
+  					.{% endblocktrans %}
+  				</p>
+    			<form method="post" action="{% url "account:account_delete" %}" autocapitalize="off">
+        			{% csrf_token %}
+        			<button type="submit" class="btn btn-danger">{% trans "Delete My Account" %}</button>
+    			</form>
+    		</div>
+    	</div>
+    </div>
+
+{% endblock %}

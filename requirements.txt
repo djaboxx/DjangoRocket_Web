@@ -1,0 +1,12 @@
+asgiref==3.4.1
+Django==4.0.4
+Jinja2>=2.11.3
+pyyaml>=5.4
+requests>=2.20.0
+Pillow
+qrcode
+django-bootstrap-form
+six
+pytz
+appconf
+django-bootstrap4

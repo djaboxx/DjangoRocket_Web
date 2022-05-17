@@ -1,0 +1,30 @@
+            <div class="navbar-header">
+		        <a style="color: white" class="navbar-brand" href="#">DjangoRocket</a>
+            </div>
+            <!-- /.navbar-header -->
+            {% if not user.is_authenticated %}
+            <ul class="nav navbar-top-links navbar-right">
+              <li><a style="color:white" href="{% url "login" %}">Log In</a></li> 
+              <li><a style="color:white" href="{% url "account:account_signup" %}">Sign Up</a></li>
+            </ul>
+            {% else %}
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <i style="color: white">Welcome, {{ user.get_username }}</i>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="{% url "account:account_settings" %}"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+			            <li>
+                            <a href="{% url "account:account_logout" %}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->                
+            </ul>
+            {% endif %}

@@ -1,0 +1,34 @@
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" id="search_site" style="color: {{ green }}" type="button">
+                                    <i style="color: {{ green }}" class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li class="sidemenu_items">
+                            <a href="/"><i class="fa fa-home fa-fw" style="color: {{ green }}"></i> Home</a>
+                        </li>
+                        <li class="sidemenu_items">
+                            <a href="{% url 'sites:sites_page' %}"><i class="fa fa-bars fa-fw" style="color: {{ green }}"></i> Sites</a>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li class="sidemenu_items">
+                            <a href="{% url 'metric_types:metric_types_page' %}"><i class="fa fa-bar-chart fa-fw" style="color: {{ green }}"></i> Metric Types</a>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li class="sidemenu_items">
+                            <a href="{% url 'analytics:analytics_page' %}"><i class="fa fa-line-chart fa-fw" style="color: {{ green }}"></i> Analytics</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>

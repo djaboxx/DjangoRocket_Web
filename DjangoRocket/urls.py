@@ -14,8 +14,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.contrib.auth import views as auth_views
+
+
+from DjangoRocket.views import Main
+from account.views import Login
 
 urlpatterns = [
+    # https://docs.djangoproject.com/en/4.0/topics/auth/default/#using-the-views
+    path('', Main.as_view(), name='main_page'),
+    path('login', 
+        Login.as_view(),
+        name="login"
+    ),
+    path('logout',
+        auth_views.LogoutView.as_view(template_name='account/logout.html'),
+        name="logout"
+    ),
+    path('account/', include(('account.urls', 'accounts'), namespace="account")),
     path('admin/', admin.site.urls),
 ]

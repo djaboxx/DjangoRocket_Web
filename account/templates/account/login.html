@@ -1,0 +1,36 @@
+{% extends 'main_site_no_sidebar.html' %}
+{% load bootstrap4 %}
+{% load bootstrap_tags %}
+{% load static %}
+{% load i18n %}
+{% block 'main_content' %}
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading" style="color: white">
+            <span style="color:green">{% trans "Log in to an existing account" %}</spn>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form method="POST" action="{% url "login" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+                    {% csrf_token %}
+                    {{ form|as_bootstrap }}
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <button type="submit" class="btn btn-primary gradient">{% trans "Log in" %}</button>
+                    <a href="{% url "account:account_password_reset" %}" class="btn btn-link">{% trans "Forgot your password?" %}</a>
+                </form>
+                {% if ACCOUNT_OPEN_SIGNUP %}
+                <p class="login-signup">
+                    <small>
+                        {% trans "Don't have an account?" %}  <strong><a href="{% url 'account:account_signup' %}">{% trans "Sign up" %}</a></strong>
+                    </small>
+                </p>
+                {% endif %}
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        {% include "account/_login_sidebar.html" %}
+    </div>
+{% endblock %}

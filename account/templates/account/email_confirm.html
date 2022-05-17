@@ -1,0 +1,21 @@
+{% extends 'main_site_no_sidebar.html' %}
+{% load bootstrap %}
+{% load static %}
+{% load i18n %}
+{% block 'main_content' %}
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-md-4">
+                <form method="post" action="{% url "account:account_confirm_email" key=confirmation.key %}">
+                    <legend>{% trans "Confirm Email" %}</legend>
+                    <fieldset>
+                        {% csrf_token %}
+                        <p>{% blocktrans with email=confirmation.email_address.email %}Confirm email address <b>{{ email }}</b>?{% endblocktrans %}</p>
+                        <button type="submit" class="btn btn-primary gradient">{% trans "Confirm" %}</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

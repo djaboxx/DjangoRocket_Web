@@ -1,0 +1,31 @@
+{% extends 'main_site.html' %}
+{% load bootstrap %}
+{% load static %}
+{% load i18n %}
+{% block 'main_content' %}
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading" style="color: white">
+            <span style="color:green">{% trans "Account" %}</span>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-4">
+		        <form method="POST" action="{% url "account:account_settings" %}">
+                    {% csrf_token %}
+                    {{ form|bootstrap }}
+                    <div class="form-group">
+                        <label class="control-label  " for="id_account_key">API Key</label>
+                        <div>
+                            <input class="form-control" 
+                                   id="id_account_key" 
+                                   name="account_key" 
+                                   type="account_key" 
+                                   value="{{ request.user.account.account_key }}" readonly>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary gradient" type="submit">{% trans "Save" %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

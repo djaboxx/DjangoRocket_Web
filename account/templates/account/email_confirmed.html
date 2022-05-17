@@ -1,0 +1,17 @@
+{% extends 'main_site_no_sidebar.html' %}
+{% load bootstrap %}
+{% load static %}
+{% load i18n %}
+{% block 'main_content' %}
+	<br />
+    <div class="panel panel-default">
+        <div class="panel-heading" style="color: white">
+    		<span style="color:white">{% trans "Email confirmed" %}</span>
+    	</div>
+    	<div class="panel-body">
+            <div class="col-md-4">
+    			<p>{% blocktrans with email=confirmation.email_address.email %}You have confirmed <b>{{ email }}</b>{% endblocktrans %}</p>
+    		</div>
+    	</div>
+    </div>
+{% endblock %}
