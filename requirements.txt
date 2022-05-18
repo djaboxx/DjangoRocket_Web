@@ -1,5 +1,5 @@
 asgiref==3.4.1
-Django==4.0.4
+Django==3.2
 Jinja2>=2.11.3
 pyyaml>=5.4
 requests>=2.20.0
@@ -10,3 +10,7 @@ six
 pytz
 appconf
 django-bootstrap4
+django-user-accounts
+pinax-theme-bootstrap
+django-utils-six
+django-appconf

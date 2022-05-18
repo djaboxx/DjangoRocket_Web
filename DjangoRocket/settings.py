@@ -28,7 +28,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+ACCOUNT_TIMEZONES = []
+ACCOUNT_LANGUAGES = []
+ACCOUNT_EMAIL_UNIQUE = True
+ACCOUNT_OPEN_SIGNUP = True
+ACCOUNT_CREATE_ON_SAVE = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,13 +42,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'bootstrap4',
     'account',
     'organization',
     'webhook',
     'workspace',
-    'django_forms_bootstrap'
-    
+    'django_forms_bootstrap',
+    "pinax_theme_bootstrap",
+    "bootstrapform"
+    # https://github.com/pinax/django-user-accounts
+]
+
+TEMPLATE_CONTEXT_PROCESSORS = [
+    "django.core.context_processors.request",
+    "pinax_theme_bootstrap.context_processors.theme"
 ]
 
 MIDDLEWARE = [

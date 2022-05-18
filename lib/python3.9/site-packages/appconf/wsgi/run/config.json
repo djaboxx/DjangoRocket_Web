@@ -1,0 +1,8 @@
+{
+  "JWT_AUTH_URL_RULE": "/api/login",
+  "JWT_EXPIRATION_DELTA": 600,
+  "JWT_SECRET_KEY": "/api/login",
+  "SECRET_KEY": "app-secret-key",
+  "SQLALCHEMY_DATABASE_URI": "sqlite:///run/db.sqlite",
+  "SQLALCHEMY_TRACK_MODIFICATIONS": false
+}

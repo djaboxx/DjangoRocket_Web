@@ -1,16 +1,21 @@
-from django.contrib import admin
-from django.urls import path, include
-from account.views import Signup
-from django.contrib.auth import views as auth_views
+from __future__ import unicode_literals
+
+from django.conf.urls import url
+
+from account.views import SignupView, LoginView, LogoutView, DeleteView
+from account.views import ConfirmEmailView
+from account.views import ChangePasswordView, PasswordResetView, PasswordResetTokenView
+from account.views import SettingsView
+
 
 urlpatterns = [
-    path('signup', Signup.as_view(), name="account_signup"),
-    path('password', auth_views.PasswordChangeView.as_view(template_name='account/password_change.html'), name="account_password_reset")
-    # path('organization/create', name='org_create'),
-    # path('organizations/invite/(?P<org_id>[0-9]+)', name='org_invite'),
-    # path('teams/create', name='team_create'),
-    # path('teams/invite/(?P<team_id>[0-9]+)', name='team_invite'),
-    # path('teams/list', name='team_list'),
-    # path('teams/(?P<team_id>[0-9]+)/users', name='team_list_members'),
-    # path('teams/destroy/(?P<team_id>[0-9]+)', name='team_destroy'),
+    url(r"^signup/$", SignupView.as_view(), name="account_signup"),
+    url(r"^login/$", LoginView.as_view(), name="account_login"),
+    url(r"^logout/$", LogoutView.as_view(), name="account_logout"),
+    url(r"^confirm_email/(?P<key>\w+)/$", ConfirmEmailView.as_view(), name="account_confirm_email"),
+    url(r"^password/$", ChangePasswordView.as_view(), name="account_password"),
+    url(r"^password/reset/$", PasswordResetView.as_view(), name="account_password_reset"),
+    url(r"^password/reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$", PasswordResetTokenView.as_view(), name="account_password_reset_token"),
+    url(r"^settings/$", SettingsView.as_view(), name="account_settings"),
+    url(r"^delete/$", DeleteView.as_view(), name="account_delete"),
 ]
