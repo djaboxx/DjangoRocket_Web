@@ -8,6 +8,7 @@ class Workspace(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     cloud_provider = models.ManyToManyField(CloudProvider)
     github_provider = models.ManyToManyField(GithubProvider)
+    github_repo = models.CharField(max_length=128)
 
 
 class WorkspaceParameter(models.Model):
