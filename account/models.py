@@ -48,7 +48,7 @@ class Account(models.Model):
     def make_account_key(self):
         m = hashlib.md5()
         _r = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(32))
-        m.update("{0}:{1}".format(str(self.user), _r.encode('utf-8')))
+        m.update(str("{0}:{1}".format(str(self.user).encode('utf-8'), _r.encode('utf-8'))).encode('utf-8'))
         return m.hexdigest().upper()
 
     @classmethod

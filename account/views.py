@@ -229,7 +229,7 @@ class SignupView(FormView):
         self.request.session.set_expiry(0)
 
     def user_credentials(self):
-        return hookset.get_user_credentials(self.form, self.identifier_field)
+        return hookset.get_user_credentials(self.form, "username")
 
     def get_code(self):
         return self.request.POST.get("code", self.request.GET.get("code"))

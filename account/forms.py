@@ -85,7 +85,7 @@ class LoginForm(forms.Form):
         required=False
     )
     user = None
-
+    identifier_field = "username"
     def clean(self):
         if self._errors:
             return
@@ -100,7 +100,7 @@ class LoginForm(forms.Form):
         return self.cleaned_data
 
     def user_credentials(self):
-        return hookset.get_user_credentials(self, self.identifier_field)
+        return hookset.get_user_credentials(self, "username")
 
 
 class LoginUsernameForm(LoginForm):

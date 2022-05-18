@@ -11,7 +11,16 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from account.hooks import AccountDefaultHookSet
 import os
+import importlib
+
+def load_settings(prefix):
+    mod = importlib.import_module(f"DjangoRocket.custom_settings.{prefix}_settings")
+    for x in dir(mod):
+        if x.startswith(prefix.upper()):
+            globals()[x] = mod.__dict__[x]
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 PACKAGE_ROOT = Path(__file__).resolve().parent
@@ -26,13 +35,20 @@ SECRET_KEY = 'django-insecure-b0l0t+n%o^2_^d_!7c1ve8#+-!3lv-lv6)wl!m6+2ecf0a7+&3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "djangorocket.com"
+]
 
 ACCOUNT_TIMEZONES = []
-ACCOUNT_LANGUAGES = []
-ACCOUNT_EMAIL_UNIQUE = True
-ACCOUNT_OPEN_SIGNUP = True
-ACCOUNT_CREATE_ON_SAVE = True
+
+# ACCOUNT_EMAIL_UNIQUE = True
+# ACCOUNT_OPEN_SIGNUP = True
+# ACCOUNT_CREATE_ON_SAVE = True
+# ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
+# ACCOUNT_HOOKSET = AccountDefaultHookSet()
+# ACCOUNT_LOGIN_REDIRECT_URL = '/'
+# ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+# ACCOUNT_EMAIL_CONFIRMATION_EMAIL = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -158,3 +174,9 @@ BOOTSTRAP4 = {
     "javascript_in_head": True,
     "include_jquery": True,
 }
+
+SITE_ID = 4
+
+
+load_settings("email")
+load_settings("account")

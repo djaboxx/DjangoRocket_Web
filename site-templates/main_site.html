@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>DjangoRocket</title>
-    <link href="{% static "bootstrap.min.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="{% static "sb-admin-2.css" %}" rel="stylesheet">
     <link href="{% static "jquery-ui.min.css" %}" rel="stylesheet">
     <link href="{% static "jquery-ui.structure.min.css" %}" rel="stylesheet">
@@ -39,9 +39,6 @@
         <nav class="gradient navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             {% include 'navbar.html' %}
             <!-- /.navbar-top-links -->
-
-            {% include 'sidebar.html' %}
-            <!-- /.navbar-static-side -->
         </nav>
         <div id="page-wrapper">
             {% block 'main_content' %}

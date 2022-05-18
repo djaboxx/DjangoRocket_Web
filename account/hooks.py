@@ -60,4 +60,4 @@ class HookProxy(object):
         return getattr(settings.ACCOUNT_HOOKSET, attr)
 
 
-hookset = HookProxy()
+hookset = AccountDefaultHookSet()
